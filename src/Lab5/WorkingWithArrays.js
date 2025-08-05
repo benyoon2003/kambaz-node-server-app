@@ -64,24 +64,24 @@ export default function WorkingWithArrays(app) {
         todos.push(newTodo);
         res.json(newTodo);
     });
-  app.delete("/lab5/todos/:id", (req, res) => {
-    const { id } = req.params;
-    const todoIndex = todos.findIndex((t) => t.id === parseInt(id));
-    if (todoIndex === -1) {
-      res.status(404).json({ message: `Unable to delete Todo with ID ${id}` });
-      return;
-    }
-    todos.splice(todoIndex, 1);
-    res.sendStatus(200);
-  });
+    app.delete("/lab5/todos/:id", (req, res) => {
+        const { id } = req.params;
+        const todoIndex = todos.findIndex((t) => t.id === parseInt(id));
+        if (todoIndex === -1) {
+            res.status(404).json({ message: `Unable to delete Todo with ID ${id}` });
+            return;
+        }
+        todos.splice(todoIndex, 1);
+        res.sendStatus(200);
+    });
 
 
     app.put("/lab5/todos/:id", (req, res) => {
         const { id } = req.params;
         const todoIndex = todos.findIndex((t) => t.id === parseInt(id));
         if (todoIndex === -1) {
-        res.status(404).json({ message: `Unable to update Todo with ID ${id}` });
-        return;
+            res.status(404).json({ message: `Unable to update Todo with ID ${id}` });
+            return;
         }
 
         todos = todos.map((t) => {
